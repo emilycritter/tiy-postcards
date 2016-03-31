@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  root 'homepage#show'
+
+  get 'sessions/new' => 'sessions#new', as: :sign_in
+  post 'sessions/new' => 'sessions#create'
+  delete 'session' => 'sessions#delete', as: :sign_out
+
+  get 'register' => 'registrations#new', as: :sign_up
+  post 'register' => 'registrations#create', as: :users
+
+  get 'postcards/new' => 'postcards#new', as: :new_postcard
+  post 'postcards' => 'postcards#create', as: :postcards
+  get 'postcards/:id' => 'postcards#show', as: :postcard
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
